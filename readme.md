@@ -11,6 +11,12 @@ Probado con:
 * **Node v16.14.1**
 * **Npm 8.5.0**
 
+Instalación de dependencias:
+
+```
+npm install
+```
+
 Ejecución rápida de práctica:
 
 ```
