@@ -13,7 +13,7 @@ module.exports = class Lista {
         this.#elements = [];
     }
 
-    index(key) {
+    #index(key) {
         for (var i = 0; i < this.#elements.length; i++) {
 
             var stored_key = this.#elements[i].key;
@@ -34,7 +34,7 @@ module.exports = class Lista {
 
     find(key) {
 
-        var key_index = this.index(key);
+        var key_index = this.#index(key);
 
         if (key_index == -1) {
             return NaN
@@ -47,7 +47,7 @@ module.exports = class Lista {
 
     add(key, value) {
 
-        var key_index = this.index(key);
+        var key_index = this.#index(key);
 
         if (key_index == -1) {
             // key doesn't exists, we push a new one
@@ -60,15 +60,13 @@ module.exports = class Lista {
         }
     }
 
-    add_first(key, value) {
-        var key_index = this.index(key);
+    get_keys() {
+        var keys = [];
 
-        if (key_index > -1) {
-            // key exists, we remove existing key:pair element
-            this.#elements.splice(key_index, 1);
+        for (var i = 0; i < this.#elements.length; i++) {
+            keys[i] = this.#elements[i].key;
         }
 
-        // key doesn't exists, we push first a new one
-        this.#elements.unshift({key, value});
+        return keys.sort();
     }
 }

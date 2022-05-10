@@ -54,8 +54,8 @@ describe("lista de pares clave:valor", function(){
 
         it("=> la lista de claves está ordenada", function() {
 
-            var index = lista.index("some_key");
-            assert.equal(index, 0);
+            var keys = lista.get_keys();
+            assert.equal(keys[0], "some_key");
         })
     })
 
@@ -90,21 +90,28 @@ describe("lista de pares clave:valor", function(){
     describe("Cuando se agrega un elemento al principio: ", function() {
 
         var lista = new Lista();
-        lista.add("some_key", "some_value");
+        lista.add("some_b_key", "some_value");
+        lista.add("some_c_key", "some_value");
 
         it("=> la lista de claves está ordenada", function() {
-            lista.add_first("first_key", "first_value");
-            assert.equal(lista.index("first_key"), 0)
+            lista.add("some_a_key", "first_value");
+
+            var keys = lista.get_keys();
+            assert.equal(keys[0], "some_a_key");
         })
     })
 
     describe("Cuando se agrega un elemento al final: ", function() {
         var lista = new Lista();
-        lista.add("some_key", "some_value");
+        lista.add("some_a_key", "some_value");
+        lista.add("some_b_key", "some_value");
 
         it("=> la lista de claves está ordenada", function() {
-            lista.add("last_key", "last_value");
-            assert.equal(lista.index("last_key"), 1);
+            
+            lista.add("some_z_key", "last_value");
+
+            var keys = lista.get_keys();
+            assert.equal(keys[2], "some_z_key");
         })
     })
 
@@ -115,8 +122,11 @@ describe("lista de pares clave:valor", function(){
         lista.add("some_key2", "some_value2");
 
         it("=> la lista está ordenada", function() {
-            lista.add_first("some_key2", "new_value2");
-            assert.equal(lista.index("some_key2"), 0);
+            lista.add("some_key2", "new_value2");
+
+            var keys = lista.get_keys();
+            assert.equal(keys[0], "some_key");
+            assert.equal(keys[1], "some_key2");
         })
     })
 
